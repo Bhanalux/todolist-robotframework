@@ -64,21 +64,20 @@ Verify To-Do list page
 Verify Click List
    [tags]    success
     Click Button    ${to_do_list}
-    ${IsElementVisible}=  Run Keyword And Return Status    Verify missing    ${to_do_list}
-    Run Keyword IF    ${IsElementVisible}       Should Be Equal     '${IsElementVisible}'     'True'
-        Compare Text  ${to_do_list}   ${txt_test2}
+    Compare Text  ${to_do_list}   ${txt_test2}
     Click Button    ${to_do_list}
-    ${IsElementVisible}=  Run Keyword And Return Status    Verify missing    ${to_do_list}
-    Run Keyword IF    ${IsElementVisible}       Should Be Equal     '${IsElementVisible}'     'True'
-        Compare Text  ${to_do_list}   ${txt_test3}
+    Compare Text  ${to_do_list}   ${txt_test3}
     Click Button    ${to_do_list}
-    ${IsElementVisible}=  Run Keyword And Return Status    Verify missing    ${to_do_list}
-    Run Keyword IF    ${IsElementVisible}       Should Be Equal     '${IsElementVisible}'     'True'
-        Compare Text  ${to_do_list}   ${txt_test4}
+    Compare Text  ${to_do_list}   ${txt_test4}
 
 Verify Delete Button on To-do Page
     [tags]    success
     Click Button    ${delete_todo}
+    Compare Text    ${to_do_list}   ${txt_test5}
+    Click Button    ${delete_todo}
+    Compare Text    ${to_do_list}   ${txt_test6}
+    Click Button    ${delete_todo}
+    Verify missing    ${to_do_list}
 
 Verify Completed Page
     [tags]    success
@@ -90,13 +89,9 @@ Verify Delete Button on Complete Page
     [tags]    success
     Wait Until Page Contains Element     ${delete_complete}
     Click Button    ${delete_complete}
-    ${IsElementVisible}=  Run Keyword And Return Status    Verify missing    ${complete_list}
-    Run Keyword IF    ${IsElementVisible}       Should Be Equal     '${IsElementVisible}'     'True'
-        Validate done list  ${complete_list}   ${txt_test2}
+    Validate done list  ${complete_list}   ${txt_test2}
     Click Button    ${delete_complete}
-    ${IsElementVisible}=  Run Keyword And Return Status    Verify missing    ${complete_list}
-    Run Keyword IF    ${IsElementVisible}       Should Be Equal     '${IsElementVisible}'     'True'
-        Validate done list  ${complete_list}   ${txt_test3}
+    Validate done list  ${complete_list}   ${txt_test3}
     Click Button    ${delete_complete}
     Verify missing    ${complete_list}
 
